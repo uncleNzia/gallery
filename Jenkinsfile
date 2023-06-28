@@ -36,8 +36,9 @@ stage('Deploy') {
         }
     }
   post {
-      success{
-        echo 'App successfully build'
+      always{
+        echo 'auto-generated'
+        emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Build failed'
         }
     }
 }
